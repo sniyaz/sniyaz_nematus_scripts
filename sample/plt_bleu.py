@@ -1,6 +1,9 @@
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import sys
 import os
+import numpy as np
 
 import pdb
 
@@ -29,8 +32,6 @@ if __name__ == '__main__':
     scores = []
     for cur_model in models:
 
-        #pdb.set_trace()
-        
 	iters_run = cur_model[10:-4]
 	iters_run = int(iters_run)
 	iters.append(iters_run)
@@ -40,8 +41,9 @@ if __name__ == '__main__':
         cur_bleu = extract_bleu(main_bleu_path)
         scores.append(cur_bleu)
 
-    plt.plot(iters, scores, "b")
-    plt.xlabel("Iterations")
+    plt.plot(range(1, len(iters) + 1), scores, "b")
+    plt.plot(range(1, len(iters) + 1), scores, "bo")
+    plt.xlabel("Iterations: Steps of 30000")
     plt.ylabel("BLEU")
     plt.savefig(output_pic_path)
 

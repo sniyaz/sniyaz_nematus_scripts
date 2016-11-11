@@ -10,7 +10,7 @@ mosesdecoder=../../mosesdecoder
 device=gpu
 
 #model prefix
-prefix=model/model.iter90000.npz
+prefix=model/model.npz
 
 dev=data/newstest2015.bpe.en
 ref=data/newstest2015.tok.de
@@ -28,7 +28,7 @@ THEANO_FLAGS=mode=FAST_RUN,floatX=float32,device=$device,on_unused_input=warn py
 
 ## get BLEU
 BEST=`cat ${prefix}_best_bleu || echo 0`
-$mosesdecoder/scripts/generic/multi-bleu.perl $ref < $dev.output.postprocessed.dev >> ${prefix}_bleu_scores
+$mosesdecoder/scripts/generic/multi-bleu.perl $ref < $dev.output.postprocessed.dev > ${prefix}_bleu_scores
 BLEU=`$mosesdecoder/scripts/generic/multi-bleu.perl $ref < $dev.output.postprocessed.dev | cut -f 3 -d ' ' | cut -f 1 -d ','`
 BETTER=`echo "$BLEU > $BEST" | bc`
 

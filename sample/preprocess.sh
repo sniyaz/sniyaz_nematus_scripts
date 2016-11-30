@@ -46,7 +46,7 @@ for prefix in corpus newstest2015
  done
 
 # clean empty and long sentences, and sentences with high source-target ratio (training corpus only)
-#$mosesdecoder/scripts/training/clean-corpus-n.perl data/corpus.tok $SRC $TRG data/corpus.tok.clean 1 80
+$mosesdecoder/scripts/training/clean-corpus-n.perl data/corpus.tok $SRC $TRG data/corpus.tok.clean 1 80
 
 # train truecaser
 $mosesdecoder/scripts/recaser/train-truecaser.perl -corpus data/corpus.tok.$SRC -model model/truecase-model.$SRC

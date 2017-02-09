@@ -4,7 +4,7 @@
 mosesdecoder=../../mosesdecoder
 
 # suffix of target language files
-lng=en
+lng=de
 
 sed 's/\@\@ //g' | \
 $mosesdecoder/scripts/recaser/detruecase.perl

@@ -34,10 +34,12 @@ if __name__ == '__main__':
 
 	iters_run = cur_model[10:-4]
 	iters_run = int(iters_run)
-	iters.append(iters_run)
+	#if iters_run <= 360000:
+        #    continue
+        iters.append(iters_run)
         
 	os.system("cp " + os.path.join(model_dir, cur_model) + " " + main_model_path)
-        os.system("./validate.sh")
+        os.system("./validate-test.sh")
         cur_bleu = extract_bleu(main_bleu_path)
         scores.append(cur_bleu)
 
